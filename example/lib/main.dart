@@ -11,19 +11,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Vesaipalagai Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Thamizhi Keyboard'),
+      home: const MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
+  const MyHomePage({super.key});
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -35,7 +33,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: const Text("Thamizhi Keyboard"),
       ),
       body: Center(
         child: Column(
@@ -56,7 +54,9 @@ class _MyHomePageState extends State<MyHomePage> {
             const SizedBox(
               height: 23,
             ),
-            //const TestMe(),
+
+            /// Just Add VesipalagaiVadivam Any where
+            /// And Pass TextController to theydal
             VesaipalagaiVadivam(
               theydal: texts,
             )
