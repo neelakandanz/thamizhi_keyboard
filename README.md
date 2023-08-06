@@ -44,5 +44,5 @@ class _MyHomePageState extends State<MyHomePage> {
 
 ## Contributing to this plugin 
 
-If you would like to contribute to the plugin, check out our contribution guide.
+If you would like to contribute to the package, check out our contribution guide.
 
