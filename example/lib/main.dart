@@ -29,6 +29,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final texts = TextEditingController();
+
+  bool openKeyboard = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +43,26 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             TextField(
               controller: texts,
+
+              ///  Use onTap Properties to open and close keyboard.
+              onTap: () {
+                debugPrint("open Keyboard");
+                setState(() {
+                  openKeyboard = true;
+                });
+              },
+
+              ///"readOnly = true" disables default keyboard on TextField for mobile or desktop.
+              //readOnly: true,
               decoration: InputDecoration(
+                prefixIcon: IconButton(
+                    onPressed: () {
+                      debugPrint("close Keyboard");
+                      setState(() {
+                        openKeyboard = false;
+                      });
+                    },
+                    icon: const Icon(Icons.search)),
                 enabledBorder: OutlineInputBorder(
                   borderSide: const BorderSide(
                     width: 5,
@@ -55,11 +76,28 @@ class _MyHomePageState extends State<MyHomePage> {
               height: 23,
             ),
 
-            /// Just Add VesipalagaiVadivam Any where
-            /// And Pass TextController to theydal
-            VesaipalagaiVadivam(
-              theydal: texts,
-            )
+            /// bool var for open keyboard
+            openKeyboard
+                ?
+
+                /// Just Add VesipalagaiVadivam Any where
+                VesaipalagaiVadivam(
+                    /// Pass TextController to theydal its "Required" Properties
+                    theydal: texts,
+
+                    /// uyirColor Is Optional Properties
+                    uyirColor: Colors.amber,
+
+                    /// uyirMeiColor Is Optional Properties
+                    uyirMeiColor: Colors.teal,
+
+                    /// backgroundColor Is Optional Properties
+                    backgroundColor: Colors.black,
+
+                    /// fontSize Is Optional Properties
+                    eluthualvul: 14,
+                  )
+                : const SizedBox(),
           ],
         ),
       ),

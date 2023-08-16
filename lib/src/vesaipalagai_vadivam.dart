@@ -1,25 +1,63 @@
 part of thamizhi_keyboard;
 
-class VesaipalagaiVadivam extends StatelessWidget {
+class VesaipalagaiVadivam extends StatefulWidget {
   const VesaipalagaiVadivam({
     Key? key,
     required this.theydal,
+    this.uyirColor,
+    this.uyirMeiColor,
+    this.backgroundColor,
+    this.eluthualvul,
   }) : super(key: key);
   final TextEditingController theydal;
+  final Color? uyirColor;
+  final Color? uyirMeiColor;
+  final Color? backgroundColor;
+  final double? eluthualvul;
+
+  @override
+  State<VesaipalagaiVadivam> createState() => _VesaipalagaiVadivamState();
+}
+
+class _VesaipalagaiVadivamState extends State<VesaipalagaiVadivam> {
+  bool state = true;
+  int valueC = 0;
+
+  // Pass this method to the child page.
+  void _update(int newValue) {
+    //setState(() => valueC = newValue);
+    setState(() {
+      valueC = newValue;
+      state = true;
+    });
+  }
+
+  int valueC2 = 0;
+  // Pass this method to the child page.
+  void _update2(int newValue) {
+    //  setState(() => valueC = newValue);
+    setState(() {
+      valueC2 = newValue;
+      state = false;
+    });
+  }
+  // bool? valueN;
+  // void updateNo(bool newValue) {
+  //   setState(() => valueC = newValue);
+  // }
 
   @override
   Widget build(BuildContext context) {
-    var h = MediaQuery.of(context).size.height;
     var w = MediaQuery.of(context).size.width;
 
     return Padding(
       padding: const EdgeInsets.only(right: 3.0, left: 3.0, bottom: 3.0),
       child: Container(
         // height: h < 282.0 ? h / 4 : h / 3,
-        width: w < 576.0 ? w : w / 2,
-        decoration: const BoxDecoration(
-            color: Colors.grey,
-            borderRadius: BorderRadius.all(Radius.circular(18))),
+        width: w < 500.0 ? w : w / 1.6,
+        decoration: BoxDecoration(
+            color: widget.backgroundColor ?? Colors.grey,
+            borderRadius: const BorderRadius.all(Radius.circular(18))),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Align(
@@ -27,185 +65,119 @@ class VesaipalagaiVadivam extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Vesaipalagai(
-                      value: "அ",
-                      textEditingController: theydal,
-                      color: ColorsConst.textUyir,
-                    ),
-                    Vesaipalagai(
-                      value: "இ",
-                      textEditingController: theydal,
-                      color: ColorsConst.textUyir,
-                    ),
-                    Vesaipalagai(
-                      value: "க்",
-                      textEditingController: theydal,
-                      color: ColorsConst.textUyirMei,
-                    ),
-                    Vesaipalagai(
-                      value: "ச்",
-                      textEditingController: theydal,
-                      color: ColorsConst.textUyirMei,
-                    ),
-                    Vesaipalagai(
-                      value: "ட்",
-                      textEditingController: theydal,
-                      color: ColorsConst.textUyirMei,
-                    ),
-                    Vesaipalagai(
-                      value: "த்",
-                      textEditingController: theydal,
-                      color: ColorsConst.textUyirMei,
-                    ),
-                    Vesaipalagai(
-                      value: "ப்",
-                      textEditingController: theydal,
-                      color: ColorsConst.textUyirMei,
-                    ),
-                    Vesaipalagai(
-                      value: "ற்",
-                      textEditingController: theydal,
-                      color: ColorsConst.textUyirMei,
-                    ),
-                  ],
-                ),
-                Row(
-                  children: <Widget>[
-                    Vesaipalagai(
-                      value: "உ",
-                      textEditingController: theydal,
-                      color: ColorsConst.textUyir,
-                    ),
-                    Vesaipalagai(
-                      value: "எ",
-                      textEditingController: theydal,
-                      color: ColorsConst.textUyir,
-                    ),
-                    Vesaipalagai(
-                      value: "ய்",
-                      textEditingController: theydal,
-                      color: ColorsConst.textUyirMei,
-                    ),
-                    Vesaipalagai(
-                      value: "ர்",
-                      textEditingController: theydal,
-                      color: ColorsConst.textUyirMei,
-                    ),
-                    Vesaipalagai(
-                      value: "ல்",
-                      textEditingController: theydal,
-                      color: ColorsConst.textUyirMei,
-                    ),
-                    Vesaipalagai(
-                      value: "வ்",
-                      textEditingController: theydal,
-                      color: ColorsConst.textUyirMei,
-                    ),
-                    Vesaipalagai(
-                      value: "ழ்",
-                      textEditingController: theydal,
-                      color: ColorsConst.textUyirMei,
-                    ),
-                    Vesaipalagai(
-                      value: "ள்",
-                      textEditingController: theydal,
-                      color: ColorsConst.textUyirMei,
-                    ),
-                  ],
-                ),
-                Row(
-                  children: <Widget>[
-                    Vesaipalagai(
-                      value: "ஐ",
-                      textEditingController: theydal,
-                      color: ColorsConst.textUyir,
-                    ),
-                    Vesaipalagai(
-                      value: "ஓ",
-                      textEditingController: theydal,
-                      color: ColorsConst.textUyir,
-                    ),
-                    Vesaipalagai(
-                      value: "ங்",
-                      textEditingController: theydal,
-                      color: ColorsConst.textUyirMei,
-                    ),
-                    Vesaipalagai(
-                      value: "ஞ்",
-                      textEditingController: theydal,
-                      color: ColorsConst.textUyirMei,
-                    ),
-                    Vesaipalagai(
-                      value: "ண்",
-                      textEditingController: theydal,
-                      color: ColorsConst.textUyirMei,
-                    ),
-                    Vesaipalagai(
-                      value: "ந்",
-                      textEditingController: theydal,
-                      color: ColorsConst.textUyirMei,
-                    ),
-                    Vesaipalagai(
-                      value: "ம்",
-                      textEditingController: theydal,
-                      color: ColorsConst.textUyirMei,
-                    ),
-                    Vesaipalagai(
-                      value: "ன்",
-                      textEditingController: theydal,
-                      color: ColorsConst.textUyirMei,
-                    ),
-                  ],
-                ),
+                state
+                    ? valueC == 1
+                        ? EnglishKeys(
+                            theydal: widget.theydal,
+                            uyirColor: widget.uyirColor,
+                            uyirMeiColor: widget.uyirMeiColor,
+                            backgroundColor: widget.backgroundColor,
+                            eluthualvu: widget.eluthualvul,
+                            //currentMozhi: update,
+                            update: _update,
+                          )
+                        : TamilKeys(
+                            theydal: widget.theydal,
+                            uyirColor: widget.uyirColor,
+                            uyirMeiColor: widget.uyirMeiColor,
+                            backgroundColor: widget.backgroundColor,
+                            eluthualvu: widget.eluthualvul,
+                            //currentMozhi: update,
+                            update: _update,
+                          )
+                    : valueC2 == 0
+                        ? NumKeys(
+                            theydal: widget.theydal,
+                            uyirColor: widget.uyirColor,
+                            uyirMeiColor: widget.uyirMeiColor,
+                            backgroundColor: widget.backgroundColor,
+                            eluthualvu: widget.eluthualvul,
+                            //currentMozhi: update,
+                            update: _update,
+                          )
+                        : EnKeys(
+                            theydal: widget.theydal,
+                            uyirColor: widget.uyirColor,
+                            uyirMeiColor: widget.uyirMeiColor,
+                            backgroundColor: widget.backgroundColor,
+                            eluthualvu: widget.eluthualvul,
+                            //currentMozhi: update,
+                            update: _update,
+                          ),
 
-                ///row 4
+                ///row 5
                 Row(
                   children: <Widget>[
                     Vesaipalagai(
-                      value: "ஆ",
-                      textEditingController: theydal,
-                      color: ColorsConst.textUyir,
+                      value: "⬍",
+                      //"⇧",
+                      textEditingController: widget.theydal,
+                      color: widget.uyirColor ?? ColorsConst.textUyir,
+                      backgroundColor: widget.backgroundColor,
                     ),
                     Vesaipalagai(
-                      value: "ஈ",
-                      textEditingController: theydal,
-                      color: ColorsConst.textUyir,
+                      value: ",",
+                      textEditingController: widget.theydal,
+                      color: widget.uyirColor ?? ColorsConst.textUyir,
+                      backgroundColor: widget.backgroundColor,
                     ),
-                    Vesaipalagai(
-                      value: "ஊ",
-                      textEditingController: theydal,
-                      color: ColorsConst.textUyir,
+                    LanguageChange(
+                      update: _update,
+                      value: "⍝",
+                      textEditingController: widget.theydal,
+                      color: widget.uyirColor ?? ColorsConst.textUyir,
+                      backgroundColor: widget.backgroundColor,
                     ),
-                    Vesaipalagai(
-                      value: "ஏ",
-                      textEditingController: theydal,
-                      color: ColorsConst.textUyir,
-                    ),
-                    Vesaipalagai(
-                      value: "ஔ",
-                      textEditingController: theydal,
-                      color: ColorsConst.textUyir,
-                    ),
-                    Vesaipalagai(
-                      value: "ஓ",
-                      textEditingController: theydal,
-                      color: ColorsConst.textUyir,
-                    ),
+                    //   LanguageChange(values: "⍝", textEditingController: theydal),
+                    // Vesaipalagai(
+                    //   //  value: "🌏︎",
+                    //   value: "⍝",
+                    //   textEditingController: theydal,
+                    //   color: uyirColor ?? ColorsConst.textUyir,
+                    //   backgroundColor: backgroundColor,
+                    // ),
+                    // Vesaipalagai(
+                    //   value: "ஏ",
+                    //   textEditingController: theydal,
+                    //   color: uyirColor ?? ColorsConst.textUyir,
+                    //   backgroundColor: backgroundColor,
+                    // ),
                     SpaceKey(
-                      flex: 2,
+                      flex: 02,
+                      // flex: 2,
                       // values: "⌨",
                       values: "␣",
-                      textEditingController: theydal,
+                      textEditingController: widget.theydal,
                       color: ColorsConst.backSpace,
+                      backgroundColor: widget.backgroundColor,
                     ),
-                    BackKey(
+                    EnController(
+                      update: _update2,
+                      value: "௧/2",
+                      textEditingController: widget.theydal,
+                      color: widget.uyirColor ?? ColorsConst.textUyir,
+                      backgroundColor: widget.backgroundColor,
+                    ),
+                    Vesaipalagai(
+                      value: ".",
+                      textEditingController: widget.theydal,
+                      color: widget.uyirColor ?? ColorsConst.textUyir,
+                      backgroundColor: widget.backgroundColor,
+                    ),
+                    // SpaceKey(
+                    //   flex: 2,
+                    //   // values: "⌨",
+                    //   values: "␣",
+                    //   textEditingController: theydal,
+                    //   color: ColorsConst.backSpace,
+                    //   backgroundColor: backgroundColor,
+                    // ),
+                    AduthaKey(
                       flex: 2,
-                      values: "⌫",
-                      textEditingController: theydal,
+                      values: "↩",
+                      textEditingController: widget.theydal,
                       color: ColorsConst.backSpace,
+                      backgroundColor: widget.backgroundColor,
                     ),
                   ],
                 ),

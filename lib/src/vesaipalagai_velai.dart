@@ -7,6 +7,8 @@ class Vesaipalagai extends StatelessWidget {
   final TextEditingController textEditingController;
   final Color? color;
   final textColor;
+  final Color? backgroundColor;
+  final double? eluthualvu;
 
   const Vesaipalagai({
     Key? key,
@@ -14,6 +16,8 @@ class Vesaipalagai extends StatelessWidget {
     required this.textEditingController,
     this.color,
     this.textColor,
+    this.backgroundColor,
+    this.eluthualvu,
   }) : super(key: key);
 
   @override
@@ -89,13 +93,19 @@ class Vesaipalagai extends StatelessWidget {
             },
             child: Center(
               child: Container(
-                color: Colors.grey,
+                color: backgroundColor ?? Colors.grey,
                 child: Container(
                   color: color,
                   margin: const EdgeInsets.all(2),
                   width: 45,
                   height: 35,
-                  child: Center(child: Text(value)),
+                  child: Center(
+                      child: Text(
+                    value,
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: eluthualvu ?? 20),
+                  )),
                 ),
               ),
             ),
@@ -112,15 +122,17 @@ class BackKey extends StatelessWidget {
   final Color? color;
   final textColor;
   final int flex;
+  final Color? backgroundColor;
 
-  const BackKey({
-    Key? key,
-    required this.values,
-    required this.textEditingController,
-    this.color,
-    this.textColor,
-    this.flex = 1,
-  }) : super(key: key);
+  const BackKey(
+      {Key? key,
+      required this.values,
+      required this.textEditingController,
+      this.color,
+      this.textColor,
+      this.flex = 1,
+      this.backgroundColor})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -160,7 +172,7 @@ class BackKey extends StatelessWidget {
             },
             child: Center(
               child: Container(
-                color: Colors.grey,
+                color: backgroundColor ?? Colors.grey,
                 child: Container(
                   color: color,
                   margin: const EdgeInsets.all(2),
@@ -221,13 +233,18 @@ class BackspaceKey extends StatelessWidget {
 }
 */
 
+
+
+
+/* 
+
 class SpaceKey extends StatelessWidget {
   final String values;
   final TextEditingController textEditingController;
   final Color? color;
   final textColor;
   final int flex;
-
+  final Color? backgroundColor;
   const SpaceKey({
     Key? key,
     required this.values,
@@ -235,6 +252,7 @@ class SpaceKey extends StatelessWidget {
     this.color,
     this.textColor,
     this.flex = 1,
+    this.backgroundColor,
   }) : super(key: key);
 
   @override
@@ -275,7 +293,7 @@ class SpaceKey extends StatelessWidget {
             },
             child: Center(
               child: Container(
-                color: Colors.grey,
+                color: backgroundColor ?? Colors.grey,
                 child: Container(
                   color: color,
                   margin: const EdgeInsets.all(2),
@@ -285,7 +303,8 @@ class SpaceKey extends StatelessWidget {
                   child: Center(
                       child: Text(
                     values,
-                    style: const TextStyle(fontSize: 20),
+                    style: const TextStyle(
+                        fontSize: 20, fontWeight: FontWeight.bold),
                   )),
                 ),
               ),
@@ -296,3 +315,6 @@ class SpaceKey extends StatelessWidget {
     );
   }
 }
+
+
+*/
