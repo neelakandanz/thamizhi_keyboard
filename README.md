@@ -18,6 +18,11 @@ thamizhi_keyboard is a feature-rich keyboard for Android, iOS, macOS, web, Linux
 <img src="https://github.com/neelakandanz/thamizhi_keyboard/blob/main/out/Screen1.PNG?raw=true" />
 
 
+## Alphabetical Keys
+
+<img src="https://github.com/neelakandanz/thamizhi_keyboard/blob/main/out/Screen4.PNG?raw=true" />
+
+
 
 ## Usage
 
