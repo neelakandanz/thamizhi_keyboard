@@ -5,7 +5,7 @@ class SpaceKey extends StatelessWidget {
   final String values;
   final TextEditingController textEditingController;
   final Color? color;
-  final textColor;
+  final Color? textColor;
   final int flex;
   final Color? backgroundColor;
   const SpaceKey({

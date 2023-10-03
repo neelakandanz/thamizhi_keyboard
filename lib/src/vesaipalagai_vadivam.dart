@@ -41,6 +41,17 @@ class _VesaipalagaiVadivamState extends State<VesaipalagaiVadivam> {
       state = false;
     });
   }
+
+  int valueC3 = 0;
+  // Pass this method to the child page.
+  void _update3(int newValue) {
+    //  setState(() => valueC = newValue);
+    setState(() {
+      valueC3 = newValue;
+      state = true;
+    });
+  }
+
   // bool? valueN;
   // void updateNo(bool newValue) {
   //   setState(() => valueC = newValue);
@@ -67,15 +78,25 @@ class _VesaipalagaiVadivamState extends State<VesaipalagaiVadivam> {
               children: <Widget>[
                 state
                     ? valueC == 1
-                        ? EnglishKeys(
-                            theydal: widget.theydal,
-                            uyirColor: widget.uyirColor,
-                            uyirMeiColor: widget.uyirMeiColor,
-                            backgroundColor: widget.backgroundColor,
-                            eluthualvu: widget.eluthualvul,
-                            //currentMozhi: update,
-                            update: _update,
-                          )
+                        ? valueC3 == 0
+                            ? EnglishKeysCap(
+                                theydal: widget.theydal,
+                                uyirColor: widget.uyirColor,
+                                uyirMeiColor: widget.uyirMeiColor,
+                                backgroundColor: widget.backgroundColor,
+                                eluthualvu: widget.eluthualvul,
+                                //currentMozhi: update,
+                                update: _update3,
+                              )
+                            : EnglishKeys(
+                                theydal: widget.theydal,
+                                uyirColor: widget.uyirColor,
+                                uyirMeiColor: widget.uyirMeiColor,
+                                backgroundColor: widget.backgroundColor,
+                                eluthualvu: widget.eluthualvul,
+                                //currentMozhi: update,
+                                update: _update,
+                              )
                         : TamilKeys(
                             theydal: widget.theydal,
                             uyirColor: widget.uyirColor,
@@ -108,12 +129,17 @@ class _VesaipalagaiVadivamState extends State<VesaipalagaiVadivam> {
                 ///row 5
                 Row(
                   children: <Widget>[
-                    Vesaipalagai(
+                    LanguageChangeCap(
+                      update: _update3,
                       value: "⬍",
-                      //"⇧",
                       textEditingController: widget.theydal,
                       color: widget.uyirColor ?? ColorsConst.textUyir,
                       backgroundColor: widget.backgroundColor,
+                      // value: "⬍",
+                      // //"⇧",
+                      // textEditingController: widget.theydal,
+                      // color: widget.uyirColor ?? ColorsConst.textUyir,
+                      // backgroundColor: widget.backgroundColor,
                     ),
                     Vesaipalagai(
                       value: ",",

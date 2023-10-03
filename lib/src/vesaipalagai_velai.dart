@@ -6,7 +6,7 @@ class Vesaipalagai extends StatelessWidget {
   final String value;
   final TextEditingController textEditingController;
   final Color? color;
-  final textColor;
+  final Color? textColor;
   final Color? backgroundColor;
   final double? eluthualvu;
 
@@ -93,20 +93,35 @@ class Vesaipalagai extends StatelessWidget {
             },
             child: Center(
               child: Container(
-                color: backgroundColor ?? Colors.grey,
-                child: Container(
-                  color: color,
-                  margin: const EdgeInsets.all(2),
-                  width: 45,
-                  height: 35,
-                  child: Center(
-                      child: Text(
-                    value,
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: eluthualvu ?? 20),
-                  )),
-                ),
+                /*
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(9.0),
+                    ),
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.red,
+                        spreadRadius: 4,
+                        blurRadius: 10,
+                      ),
+                      BoxShadow(
+                        color: Colors.red,
+                        spreadRadius: -4,
+                        blurRadius: 5,
+                      )
+                    ]),
+*/
+                color: color,
+                margin: const EdgeInsets.all(2),
+                width: 45,
+                height: 35,
+                child: Center(
+                    child: Text(
+                  value,
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: eluthualvu ?? 20),
+                )),
               ),
             ),
           ),
@@ -120,7 +135,7 @@ class BackKey extends StatelessWidget {
   final String values;
   final TextEditingController textEditingController;
   final Color? color;
-  final textColor;
+  final Color? textColor;
   final int flex;
   final Color? backgroundColor;
 

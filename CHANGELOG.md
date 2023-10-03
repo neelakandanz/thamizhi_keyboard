@@ -14,3 +14,8 @@
 * "New key: Return"
 * Personalized color and font size options available.
 
+## 0.0.3
+
+### Third release
+* English capital keys included.
+
