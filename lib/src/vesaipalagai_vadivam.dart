@@ -9,6 +9,7 @@ class VesaipalagaiVadivam extends StatefulWidget {
     this.backgroundColor,
     this.eluthualvul,
   }) : super(key: key);
+
   final TextEditingController theydal;
   final Color? uyirColor;
   final Color? uyirMeiColor;
@@ -22,196 +23,157 @@ class VesaipalagaiVadivam extends StatefulWidget {
 class _VesaipalagaiVadivamState extends State<VesaipalagaiVadivam> {
   bool state = true;
   int valueC = 0;
-
-  // Pass this method to the child page.
-  void _update(int newValue) {
-    //setState(() => valueC = newValue);
-    setState(() {
-      valueC = newValue;
-      state = true;
-    });
-  }
-
   int valueC2 = 0;
-  // Pass this method to the child page.
-  void _update2(int newValue) {
-    //  setState(() => valueC = newValue);
-    setState(() {
-      valueC2 = newValue;
-      state = false;
-    });
-  }
-
   int valueC3 = 0;
-  // Pass this method to the child page.
-  void _update3(int newValue) {
-    //  setState(() => valueC = newValue);
-    setState(() {
-      valueC3 = newValue;
-      state = true;
-    });
+
+  void _update(int newValue) => setState(() {
+        valueC = newValue;
+        state = true;
+      });
+
+  void _update2(int newValue) => setState(() {
+        valueC2 = newValue;
+        state = false;
+      });
+
+  void _update3(int newValue) => setState(() {
+        valueC3 = newValue;
+        state = true;
+      });
+
+  Widget _buildContent() {
+    if (state) {
+      if (valueC == 1) {
+        return valueC3 == 0 ? _buildEnglishKeysCap() : _buildEnglishKeys();
+      } else {
+        return _buildTamilKeys();
+      }
+    } else {
+      return valueC2 == 0 ? _buildNumKeys() : _buildEnKeys();
+    }
   }
 
-  // bool? valueN;
-  // void updateNo(bool newValue) {
-  //   setState(() => valueC = newValue);
-  // }
+  Widget _buildEnglishKeysCap() => EnglishKeysCap(
+        theydal: widget.theydal,
+        uyirColor: widget.uyirColor,
+        uyirMeiColor: widget.uyirMeiColor,
+        backgroundColor: widget.backgroundColor,
+        eluthualvu: widget.eluthualvul,
+        update: _update3,
+      );
+
+  Widget _buildEnglishKeys() => EnglishKeys(
+        theydal: widget.theydal,
+        uyirColor: widget.uyirColor,
+        uyirMeiColor: widget.uyirMeiColor,
+        backgroundColor: widget.backgroundColor,
+        eluthualvu: widget.eluthualvul,
+        update: _update,
+      );
+
+  Widget _buildTamilKeys() => TamilKeys(
+        theydal: widget.theydal,
+        uyirColor: widget.uyirColor,
+        uyirMeiColor: widget.uyirMeiColor,
+        backgroundColor: widget.backgroundColor,
+        eluthualvu: widget.eluthualvul,
+        update: _update,
+      );
+
+  Widget _buildNumKeys() => NumKeys(
+        theydal: widget.theydal,
+        uyirColor: widget.uyirColor,
+        uyirMeiColor: widget.uyirMeiColor,
+        backgroundColor: widget.backgroundColor,
+        eluthualvu: widget.eluthualvul,
+        update: _update,
+      );
+
+  Widget _buildEnKeys() => EnKeys(
+        theydal: widget.theydal,
+        uyirColor: widget.uyirColor,
+        uyirMeiColor: widget.uyirMeiColor,
+        backgroundColor: widget.backgroundColor,
+        eluthualvu: widget.eluthualvul,
+        update: _update,
+      );
 
   @override
   Widget build(BuildContext context) {
     var w = MediaQuery.of(context).size.width;
 
     return Padding(
-      padding: const EdgeInsets.only(right: 3.0, left: 3.0, bottom: 3.0),
+      padding: const EdgeInsets.symmetric(horizontal: 3.0, vertical: 3.0),
       child: Container(
-        // height: h < 282.0 ? h / 4 : h / 3,
         width: w < 500.0 ? w : w / 1.6,
         decoration: BoxDecoration(
-            color: widget.backgroundColor ?? Colors.grey,
-            borderRadius: const BorderRadius.all(Radius.circular(18))),
+          color: widget.backgroundColor ??
+              const Color.fromARGB(255, 230, 213, 213),
+          borderRadius: const BorderRadius.all(Radius.circular(18)),
+        ),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Align(
-            alignment: Alignment.bottomCenter,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                state
-                    ? valueC == 1
-                        ? valueC3 == 0
-                            ? EnglishKeysCap(
-                                theydal: widget.theydal,
-                                uyirColor: widget.uyirColor,
-                                uyirMeiColor: widget.uyirMeiColor,
-                                backgroundColor: widget.backgroundColor,
-                                eluthualvu: widget.eluthualvul,
-                                //currentMozhi: update,
-                                update: _update3,
-                              )
-                            : EnglishKeys(
-                                theydal: widget.theydal,
-                                uyirColor: widget.uyirColor,
-                                uyirMeiColor: widget.uyirMeiColor,
-                                backgroundColor: widget.backgroundColor,
-                                eluthualvu: widget.eluthualvul,
-                                //currentMozhi: update,
-                                update: _update,
-                              )
-                        : TamilKeys(
-                            theydal: widget.theydal,
-                            uyirColor: widget.uyirColor,
-                            uyirMeiColor: widget.uyirMeiColor,
-                            backgroundColor: widget.backgroundColor,
-                            eluthualvu: widget.eluthualvul,
-                            //currentMozhi: update,
-                            update: _update,
-                          )
-                    : valueC2 == 0
-                        ? NumKeys(
-                            theydal: widget.theydal,
-                            uyirColor: widget.uyirColor,
-                            uyirMeiColor: widget.uyirMeiColor,
-                            backgroundColor: widget.backgroundColor,
-                            eluthualvu: widget.eluthualvul,
-                            //currentMozhi: update,
-                            update: _update,
-                          )
-                        : EnKeys(
-                            theydal: widget.theydal,
-                            uyirColor: widget.uyirColor,
-                            uyirMeiColor: widget.uyirMeiColor,
-                            backgroundColor: widget.backgroundColor,
-                            eluthualvu: widget.eluthualvul,
-                            //currentMozhi: update,
-                            update: _update,
-                          ),
-
-                ///row 5
-                Row(
-                  children: <Widget>[
-                    LanguageChangeCap(
-                      update: _update3,
-                      value: "⬍",
-                      textEditingController: widget.theydal,
-                      color: widget.uyirColor ?? ColorsConst.textUyir,
-                      backgroundColor: widget.backgroundColor,
-                      // value: "⬍",
-                      // //"⇧",
-                      // textEditingController: widget.theydal,
-                      // color: widget.uyirColor ?? ColorsConst.textUyir,
-                      // backgroundColor: widget.backgroundColor,
-                    ),
-                    Vesaipalagai(
-                      value: ",",
-                      textEditingController: widget.theydal,
-                      color: widget.uyirColor ?? ColorsConst.textUyir,
-                      backgroundColor: widget.backgroundColor,
-                    ),
-                    LanguageChange(
-                      update: _update,
-                      value: "⍝",
-                      textEditingController: widget.theydal,
-                      color: widget.uyirColor ?? ColorsConst.textUyir,
-                      backgroundColor: widget.backgroundColor,
-                    ),
-                    //   LanguageChange(values: "⍝", textEditingController: theydal),
-                    // Vesaipalagai(
-                    //   //  value: "🌏︎",
-                    //   value: "⍝",
-                    //   textEditingController: theydal,
-                    //   color: uyirColor ?? ColorsConst.textUyir,
-                    //   backgroundColor: backgroundColor,
-                    // ),
-                    // Vesaipalagai(
-                    //   value: "ஏ",
-                    //   textEditingController: theydal,
-                    //   color: uyirColor ?? ColorsConst.textUyir,
-                    //   backgroundColor: backgroundColor,
-                    // ),
-                    SpaceKey(
-                      flex: 02,
-                      // flex: 2,
-                      // values: "⌨",
-                      values: "␣",
-                      textEditingController: widget.theydal,
-                      color: ColorsConst.backSpace,
-                      backgroundColor: widget.backgroundColor,
-                    ),
-                    EnController(
-                      update: _update2,
-                      value: "௧/2",
-                      textEditingController: widget.theydal,
-                      color: widget.uyirColor ?? ColorsConst.textUyir,
-                      backgroundColor: widget.backgroundColor,
-                    ),
-                    Vesaipalagai(
-                      value: ".",
-                      textEditingController: widget.theydal,
-                      color: widget.uyirColor ?? ColorsConst.textUyir,
-                      backgroundColor: widget.backgroundColor,
-                    ),
-                    // SpaceKey(
-                    //   flex: 2,
-                    //   // values: "⌨",
-                    //   values: "␣",
-                    //   textEditingController: theydal,
-                    //   color: ColorsConst.backSpace,
-                    //   backgroundColor: backgroundColor,
-                    // ),
-                    AduthaKey(
-                      flex: 2,
-                      values: "↩",
-                      textEditingController: widget.theydal,
-                      color: ColorsConst.backSpace,
-                      backgroundColor: widget.backgroundColor,
-                    ),
-                  ],
-                ),
-              ],
-            ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              _buildContent(),
+              _buildActionRow(),
+            ],
           ),
         ),
       ),
     );
   }
+
+  Widget _buildActionRow() => Row(
+        children: <Widget>[
+          LanguageChangeCap(
+            update: _update3,
+            value: "⇧",
+            textEditingController: widget.theydal,
+            color: widget.uyirColor ?? ColorsConst.textUyir,
+            backgroundColor: widget.backgroundColor,
+          ),
+          Vesaipalagai(
+            value: ",",
+            textEditingController: widget.theydal,
+            color: widget.uyirColor ?? ColorsConst.textUyir,
+            backgroundColor: widget.backgroundColor,
+          ),
+          LanguageChange(
+            update: _update,
+            value: "⍝",
+            textEditingController: widget.theydal,
+            color: widget.uyirColor ?? ColorsConst.textUyir,
+            backgroundColor: widget.backgroundColor,
+          ),
+          SpaceKey(
+            flex: 2,
+            values: "␣",
+            textEditingController: widget.theydal,
+            color: ColorsConst.backSpace,
+            backgroundColor: widget.backgroundColor,
+          ),
+          EnController(
+            update: _update2,
+            value: "௧/2",
+            textEditingController: widget.theydal,
+            color: widget.uyirColor ?? ColorsConst.textUyir,
+            backgroundColor: widget.backgroundColor,
+          ),
+          Vesaipalagai(
+            value: ".",
+            textEditingController: widget.theydal,
+            color: widget.uyirColor ?? ColorsConst.textUyir,
+            backgroundColor: widget.backgroundColor,
+          ),
+          AduthaKey(
+            flex: 2,
+            values: "↩",
+            textEditingController: widget.theydal,
+            color: ColorsConst.backSpace,
+            backgroundColor: widget.backgroundColor,
+          ),
+        ],
+      );
 }

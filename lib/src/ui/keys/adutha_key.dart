@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 class AduthaKey extends StatelessWidget {
   final String values;
@@ -8,6 +7,7 @@ class AduthaKey extends StatelessWidget {
   final Color? textColor;
   final int flex;
   final Color? backgroundColor;
+
   const AduthaKey({
     Key? key,
     required this.values,
@@ -20,56 +20,35 @@ class AduthaKey extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    // Ensure buttonWidth is a double value
+    final double buttonWidth = screenWidth < 576.0 ? 45.0 : 60.0;
+
     return Expanded(
-      //  flex: flex,
-      child: Semantics.fromProperties(
-        properties: SemanticsProperties(
-          label: values,
-          checked: true,
-        ),
-        child: ExcludeSemantics(
-          child: GestureDetector(
-            onTap: () {
-              var temps = textEditingController.text;
-              //print(temps);
+      flex: flex,
+      child: GestureDetector(
+        onTap: () {
+          final currentText = textEditingController.text;
 
-              // if(temps.length > 0){
-              //   temps.substring(0,temps.length-1);
-              // }
-              ///----------------------------------
-              // if (temps != null && temps.length > 0) {
-              //   // var tempss;
-              //   var tempss = temps.substring(0, temps.length - 1);
-              //   textEditingController.text = tempss;
-              // } else {
-              //   textEditingController.text += values;
-              // }
-              //--------------
-              if (temps.isNotEmpty) {
-                var tempss = '$temps\n';
-                textEditingController.text = tempss;
-              } else {
-                // textEditingController.text += values;
-              }
-
-              ///-------------------------------------------
-            },
-            child: Center(
-              child: Container(
-                color: backgroundColor ?? Colors.grey,
-                child: Container(
-                  color: color,
-                  margin: const EdgeInsets.all(2),
-                  width: 45,
-                  //width: 95,
-                  //width: 80,
-                  height: 35,
-                  child: Center(
-                      child: Text(
-                    values,
-                    style: const TextStyle(
-                        fontSize: 20, fontWeight: FontWeight.bold),
-                  )),
+          // Append a newline character to the current text
+          textEditingController.text = '$currentText\n';
+        },
+        child: Container(
+          color: backgroundColor ?? Colors.transparent,
+          margin: const EdgeInsets.all(2.0),
+          width: buttonWidth,
+          height: 35.0,
+          child: Center(
+            child: Container(
+              color: color ?? Colors.grey,
+              child: Center(
+                child: Text(
+                  values,
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.bold,
+                    color: textColor ?? Colors.black,
+                  ),
                 ),
               ),
             ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 class SpaceKey extends StatelessWidget {
   final String values;
@@ -8,6 +7,7 @@ class SpaceKey extends StatelessWidget {
   final Color? textColor;
   final int flex;
   final Color? backgroundColor;
+
   const SpaceKey({
     Key? key,
     required this.values,
@@ -20,57 +20,31 @@ class SpaceKey extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var w = MediaQuery.of(context).size.width;
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return Expanded(
       flex: flex,
-      child: Semantics.fromProperties(
-        properties: SemanticsProperties(
-          label: values,
-          checked: true,
-        ),
-        child: ExcludeSemantics(
-          child: GestureDetector(
-            onTap: () {
-              var temps = textEditingController.text;
-              //print(temps);
+      child: GestureDetector(
+        onTap: () {
+          final currentText = textEditingController.text;
 
-              // if(temps.length > 0){
-              //   temps.substring(0,temps.length-1);
-              // }
-              ///----------------------------------
-              // if (temps != null && temps.length > 0) {
-              //   // var tempss;
-              //   var tempss = temps.substring(0, temps.length - 1);
-              //   textEditingController.text = tempss;
-              // } else {
-              //   textEditingController.text += values;
-              // }
-              //--------------
-              if (temps.isNotEmpty) {
-                var tempss = '$temps ';
-                textEditingController.text = tempss;
-              } else {
-                // textEditingController.text += values;
-              }
-
-              ///-------------------------------------------
-            },
+          // Append a space to the current text
+          textEditingController.text = '$currentText ';
+        },
+        child: Container(
+          color: backgroundColor ?? Colors.transparent,
+          child: Container(
+            color: color ?? Colors.grey,
+            margin: const EdgeInsets.all(2),
+            width: screenWidth < 576.0 ? 95 : 140,
+            height: 35,
             child: Center(
-              child: Container(
-                color: backgroundColor ?? Colors.grey,
-                child: Container(
-                  color: color,
-                  margin: const EdgeInsets.all(2),
-                  width: w < 576.0 ? 95 : 140,
-                  //120
-                  //width: 80,
-                  height: 35,
-                  child: Center(
-                      child: Text(
-                    values,
-                    style: const TextStyle(
-                        fontSize: 20, fontWeight: FontWeight.bold),
-                  )),
+              child: Text(
+                values,
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: textColor ?? Colors.black,
                 ),
               ),
             ),

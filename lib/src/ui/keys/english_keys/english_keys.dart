@@ -282,83 +282,6 @@ class EnglishKeys extends StatelessWidget {
             ),
           ],
         ),
-
-        /*  ///row 5
-        Row(
-          children: [
-            Vesaipalagai(
-              value: "ஆ",
-              textEditingController: theydal,
-              color: uyirColor ?? ColorsConst.textUyir,
-              backgroundColor: backgroundColor,
-            ),
-            Vesaipalagai(
-              value: ",",
-              textEditingController: theydal,
-              color: uyirColor ?? ColorsConst.textUyir,
-              backgroundColor: backgroundColor,
-            ),
-            LanguageChange(
-              update: update,
-              value: "⍝",
-              textEditingController: theydal,
-              color: uyirColor ?? ColorsConst.textUyir,
-              backgroundColor: backgroundColor,
-            ),
-            //   LanguageChange(values: "⍝", textEditingController: theydal),
-            // Vesaipalagai(
-            //   //  value: "🌏︎",
-            //   value: "⍝",
-            //   textEditingController: theydal,
-            //   color: uyirColor ?? ColorsConst.textUyir,
-            //   backgroundColor: backgroundColor,
-            // ),
-            // Vesaipalagai(
-            //   value: "ஏ",
-            //   textEditingController: theydal,
-            //   color: uyirColor ?? ColorsConst.textUyir,
-            //   backgroundColor: backgroundColor,
-            // ),
-            SpaceKey(
-              flex: 02,
-              // flex: 2,
-              // values: "⌨",
-              values: "␣",
-              textEditingController: theydal,
-              color: ColorsConst.backSpace,
-              backgroundColor: backgroundColor,
-            ),
-            Vesaipalagai(
-              value: "ஔ",
-              textEditingController: theydal,
-              color: uyirColor ?? ColorsConst.textUyir,
-              backgroundColor: backgroundColor,
-            ),
-            Vesaipalagai(
-              value: ".",
-              textEditingController: theydal,
-              color: uyirColor ?? ColorsConst.textUyir,
-              backgroundColor: backgroundColor,
-            ),
-            // SpaceKey(
-            //   flex: 2,
-            //   // values: "⌨",
-            //   values: "␣",
-            //   textEditingController: theydal,
-            //   color: ColorsConst.backSpace,
-            //   backgroundColor: backgroundColor,
-            // ),
-            BackKey(
-              flex: 2,
-              values: "⌫",
-              textEditingController: theydal,
-              color: ColorsConst.backSpace,
-              backgroundColor: backgroundColor,
-            ),
-          ],
-        ),
-     
-     */
       ],
     );
   }
@@ -622,16 +545,6 @@ class EnglishKeysCap extends StatelessWidget {
               backgroundColor: backgroundColor,
               eluthualvu: eluthualvu,
             ),
-
-            // SpaceKey(
-            //   flex: 2,
-            //   // values: "⌨",
-            //   values: "␣",
-            //   textEditingController: theydal,
-            //   color: ColorsConst.backSpace,
-            //   backgroundColor: backgroundColor,
-            // ),
-
             BackKey(
               flex: 2,
               values: "⌫",
@@ -641,83 +554,6 @@ class EnglishKeysCap extends StatelessWidget {
             ),
           ],
         ),
-
-        /*  ///row 5
-        Row(
-          children: [
-            Vesaipalagai(
-              value: "ஆ",
-              textEditingController: theydal,
-              color: uyirColor ?? ColorsConst.textUyir,
-              backgroundColor: backgroundColor,
-            ),
-            Vesaipalagai(
-              value: ",",
-              textEditingController: theydal,
-              color: uyirColor ?? ColorsConst.textUyir,
-              backgroundColor: backgroundColor,
-            ),
-            LanguageChange(
-              update: update,
-              value: "⍝",
-              textEditingController: theydal,
-              color: uyirColor ?? ColorsConst.textUyir,
-              backgroundColor: backgroundColor,
-            ),
-            //   LanguageChange(values: "⍝", textEditingController: theydal),
-            // Vesaipalagai(
-            //   //  value: "🌏︎",
-            //   value: "⍝",
-            //   textEditingController: theydal,
-            //   color: uyirColor ?? ColorsConst.textUyir,
-            //   backgroundColor: backgroundColor,
-            // ),
-            // Vesaipalagai(
-            //   value: "ஏ",
-            //   textEditingController: theydal,
-            //   color: uyirColor ?? ColorsConst.textUyir,
-            //   backgroundColor: backgroundColor,
-            // ),
-            SpaceKey(
-              flex: 02,
-              // flex: 2,
-              // values: "⌨",
-              values: "␣",
-              textEditingController: theydal,
-              color: ColorsConst.backSpace,
-              backgroundColor: backgroundColor,
-            ),
-            Vesaipalagai(
-              value: "ஔ",
-              textEditingController: theydal,
-              color: uyirColor ?? ColorsConst.textUyir,
-              backgroundColor: backgroundColor,
-            ),
-            Vesaipalagai(
-              value: ".",
-              textEditingController: theydal,
-              color: uyirColor ?? ColorsConst.textUyir,
-              backgroundColor: backgroundColor,
-            ),
-            // SpaceKey(
-            //   flex: 2,
-            //   // values: "⌨",
-            //   values: "␣",
-            //   textEditingController: theydal,
-            //   color: ColorsConst.backSpace,
-            //   backgroundColor: backgroundColor,
-            // ),
-            BackKey(
-              flex: 2,
-              values: "⌫",
-              textEditingController: theydal,
-              color: ColorsConst.backSpace,
-              backgroundColor: backgroundColor,
-            ),
-          ],
-        ),
-     
-     */
       ],
     );
   }
