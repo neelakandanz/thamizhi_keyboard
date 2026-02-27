@@ -1,122 +1,176 @@
-# thamizhi_keyboard
+# Thamizhi Keyboard SDK
 
-thamizhi_keyboard is a feature-rich keyboard for Android, iOS, macOS, web, Linux and Windows.
+[![Pub Version](https://img.shields.io/pub/v/thamizhi_keyboard?color=blue&style=flat-square)](https://pub.dev/packages/thamizhi_keyboard)
+[![Flutter SDK](https://img.shields.io/badge/Flutter-%E2%89%A53.10.0-blue.svg?style=flat-square&logo=flutter)](https://flutter.dev)
+[![Dart SDK](https://img.shields.io/badge/Dart-%E2%89%A53.0.0-blue.svg?style=flat-square&logo=dart)](https://dart.dev)
+[![Platform support](https://img.shields.io/badge/platform-android%20%7C%20ios%20%7C%20macos%20%7C%20web%20%7C%20linux%20%7C%20windows-lightgrey.svg?style=flat-square)](#)
 
-## Description
+A highly professional, production-grade, and responsive Tamil keyboard SDK for Flutter. Designed to mimic the aesthetics and performance of native mobile keyboards (like Gboard and iOS) while smoothly adapting across mobile, tablet, desktop, and web environments.
 
- Tamil keyboard is a tool used to type in the Tamil language. It has a set of keys that correspond to the Tamil alphabet and allows users to type words and sentences in Tamil script. The keyboard can be used on computers, smartphones, and other electronic devices. It is a useful tool for those who want to communicate in Tamil or write in the language for personal or professional purposes.
+---
 
+## 📸 Showcase
 
-## Features
+| Mobile (Dark Mode) | Mobile (Light Mode) |
+| :---: | :---: |
+| <img src="https://github.com/neelakandanz/thamizhi_keyboard/blob/main/out/Screen2.PNG?raw=true" width="250" /> | <img src="https://github.com/neelakandanz/thamizhi_keyboard/blob/main/out/Screen4.PNG?raw=true" width="250" /> |
 
-## Mobile Screen Size
+| Desktop / Web / Tablet Responsive Layout |
+| :---: |
+| <img src="https://github.com/neelakandanz/thamizhi_keyboard/blob/main/out/Screen1.PNG?raw=true" width="600" /> |
 
-<img src="https://github.com/neelakandanz/thamizhi_keyboard/blob/main/out/Screen2.PNG?raw=true" />
+*(Screenshots will be updated on the repository to reflect the new dark-themed Example Application)*
 
-## Desktop or Web Screen Size
+---
 
-<img src="https://github.com/neelakandanz/thamizhi_keyboard/blob/main/out/Screen1.PNG?raw=true" />
+## ✨ Features
 
+- **Native-Like UI:** Crafted with proper spacing, realistic touch highlights, drop shadows, and polished boundaries to replicate top-tier system keyboards.
+- **Ultra-Fast Performance:** Built using highly optimized `RepaintBoundary` wrappers and a minimal `ValueNotifier` state layer. Touch ripples do not rebuild your entire screen.
+- **Fluid Responsiveness:** Adaptive layouts that gracefully expand or constrain themselves automatically if running on an iPhone, iPad, or Desktop Web Browser using core `BoxConstraints`.
+- **Pure Dart Tamil Engine:** Complex localized Tamil consonant/vowel compositions (e.g., `க் + ஆ = கா`) are completely decoupled into the abstract `TamilEngine` API, laying foundations for extensibility hooks (prediction/auto-correct engines).
+- **Comprehensive Theming:** Features `light` and `dark` mode defaults via `KeyboardTheme`, switching interactively alongside your app's global state.
+- **Usability Focus:** Integrated with native `HapticFeedback`, swift language switching (Tamil / English / Numbers), and robust swipe/backspace capabilities.
 
-## Alphabetical Keys
+---
 
-<img src="https://github.com/neelakandanz/thamizhi_keyboard/blob/main/out/Screen4.PNG?raw=true" />
+## ⌨️ How It Works (Typing Rules)
 
+The keyboard intelligently combines pure consonants (Mei Ezhuthukkal) with vowels (Uyir Ezhuthukkal) automatically using the internal `TamilEngine`. 
 
+When you type a consonant ending with the pulli (`்`) and immediately follow it with a vowel, the SDK replaces them with the correct compound character (Uyirmei Ezhuthukkal). 
 
-## Usage
+**Examples of Combinations:**
+- `க்` + `அ` = `க`
+- `ச்` + `ஆ` = `சா`
+- `ட்` + `இ` = `டி`
+- `த்` + `ஈ` = `தீ`
+- `ப்` + `உ` = `பு`
+- `ம்` + `ஊ` = `மூ`
+- `ய்` + `எ` = `யெ`
+- `ர்` + `ஏ` = `ரே`
+- `ல்` + `ஐ` = `லை`
+- `வ்` + `ஒ` = `வொ`
+- `ழ்` + `ஓ` = `ழோ`
+- `ள்` + `ஔ` = `ளௌ`
 
-Refer this Page for long examples `/example` folder.
+This allows users to type naturally and quickly without needing a massive layout containing all 247 Tamil characters.
+
+---
+
+## 🏗 Modular Architecture
+
+The SDK strictly follows separating presentation and logic:
+1. **Engine Layer (`TamilEngine`)**: Handles instantaneous contextual replacements mathematically.
+2. **State Layer (`KeyboardController`)**: Non-blocking `ValueNotifier` preserving active layouts, shift modifiers, and input routing. 
+3. **UI Layer (`ThamizhiKeyboard`)**: The responsive, purely visual layer injected into the view hierarchy.
+
+---
+
+## 🚀 Installation & Usage
+
+Add the following to your `pubspec.yaml`:
+
+```yaml
+dependencies:
+  thamizhi_keyboard: ^0.1.0
+```
+
+### Best Practices Example
+
+To deploy the keyboard effectively, manage it alongside a `TextEditingController` and link its visibility to the field's `FocusNode`. Using an `AnimatedContainer` delivers a gorgeous, premium slide-in aesthetic:
 
 ```dart
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+import 'package:flutter/material.dart';
+import 'package:thamizhi_keyboard/thamizhi_keyboard.dart';
 
+class MyKeyboardScreen extends StatefulWidget {
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  _MyKeyboardScreenState createState() => _MyKeyboardScreenState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  final texts = TextEditingController();
+class _MyKeyboardScreenState extends State<MyKeyboardScreen> {
+  final TextEditingController _textController = TextEditingController();
+  final FocusNode _focusNode = FocusNode();
+  bool _isKeyboardVisible = false;
 
-  bool openKeyboard = false;
+  @override
+  void initState() {
+    super.initState();
+    _focusNode.addListener(() {
+      if (_focusNode.hasFocus) {
+        setState(() => _isKeyboardVisible = true);
+      }
+    });
+  }
+
+  void _hideKeyboard() {
+    _focusNode.unfocus();
+    setState(() => _isKeyboardVisible = false);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Thamizhi Keyboard"),
-      ),
-      body: Center(
+      appBar: AppBar(title: const Text('Premium Typing')),
+      body: GestureDetector(
+        onTap: _hideKeyboard, // Dismiss on outside click
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            TextField(
-              controller: texts,
-
-              ///  Use onTap Properties to open and close keyboard.
-              onTap: () {
-                debugPrint("open Keyboard");
-                setState(() {
-                  openKeyboard = true;
-                });
-              },
-
-              ///"readOnly = true" disables default keyboard on TextField for mobile or desktop.
-              //readOnly: true,
-              decoration: InputDecoration(
-                prefixIcon: IconButton(
-                    onPressed: () {
-                      debugPrint("close Keyboard");
-                      setState(() {
-                        openKeyboard = false;
-                      });
-                    },
-                    icon: const Icon(Icons.search)),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(
-                    width: 5,
-                    color: Colors.greenAccent,
+          children: [
+            Expanded(
+              child: Center(
+                child: TextField(
+                  controller: _textController,
+                  focusNode: _focusNode,
+                  readOnly: true, // Prevents default system keyboard
+                  showCursor: true,
+                  decoration: const InputDecoration(
+                    hintText: "Type in Tamil...",
+                    border: OutlineInputBorder(),
                   ),
-                  borderRadius: BorderRadius.circular(50.0),
                 ),
               ),
             ),
-            const SizedBox(
-              height: 23,
+            
+            // Render the responsive ThamizhiKeyboard
+            AnimatedContainer(
+              duration: const Duration(milliseconds: 300),
+              curve: Curves.fastOutSlowIn,
+              height: _isKeyboardVisible ? null : 0,
+              child: _isKeyboardVisible 
+                  ? ThamizhiKeyboard(controller: _textController)
+                  : const SizedBox.shrink(),
             ),
-
-            /// bool var for open keyboard
-            openKeyboard
-                ?
-
-                /// Just Add VesipalagaiVadivam Any where
-                VesaipalagaiVadivam(
-                    /// Pass TextController to theydal its "Required" Properties
-                    theydal: texts,
-
-                    /// uyirColor Is Optional Properties
-                    uyirColor: Colors.amber,
-
-                    /// uyirMeiColor Is Optional Properties
-                    uyirMeiColor: Colors.teal,
-
-                    /// backgroundColor Is Optional Properties
-                    backgroundColor: Colors.black,
-
-                    /// fontSize Is Optional Properties
-                    eluthualvul: 14,
-                  )
-                : const SizedBox(),
           ],
         ),
       ),
     );
   }
 }
-
 ```
 
-## Contributing to this plugin 
+Check out the `/example` directory for a fully styled, dark-themed production-ready demo utilizing Google Fonts and custom styling constraints.
 
-If you would like to contribute to the package, check out our contribution guide.
+---
 
+## 🛠 Customization
+
+You can seamlessly override the keyboard's color palette by passing a `KeyboardTheme` property directly:
+
+```dart
+ThamizhiKeyboard(
+  controller: _textController,
+  theme: const KeyboardTheme(
+    backgroundColor: Colors.black,
+    keyColor: Color(0xFF333333),
+    altKeyColor: Color(0xFF1E1E1E),
+    textColor: Colors.white,
+    shadowColor: Colors.black45,
+    brightness: Brightness.dark,
+  ),
+)
+```
+
+## 🤝 Contributing
+
+We welcome contributors! Feel free to raise issues or submit pull requests with bug fixes or new features!
