@@ -1,19 +1,12 @@
 library thamizhi_keyboard;
 
-// import 'dart:io';
+export 'src/engine/tamil_engine.dart';
+export 'src/state/keyboard_controller.dart';
+export 'src/state/keyboard_state.dart';
+export 'src/ui/components/key_widget.dart';
+export 'src/ui/keyboard_layout.dart';
+export 'src/ui/theme/keyboard_theme.dart';
 
-import 'package:flutter/material.dart';
-import 'package:thamizhi_keyboard/src/constant.dart';
-import 'package:thamizhi_keyboard/src/controller/en_controller.dart';
-import 'package:thamizhi_keyboard/src/controller/mozhi_controller.dart';
-import 'package:thamizhi_keyboard/src/ui/keys/adutha_key.dart';
-import 'package:thamizhi_keyboard/src/ui/keys/en_keys/en_keys.dart';
-import 'package:thamizhi_keyboard/src/ui/keys/english_keys/english_keys.dart';
-import 'package:thamizhi_keyboard/src/ui/keys/num_keys/num_keys.dart';
-import 'package:thamizhi_keyboard/src/ui/keys/space_key.dart';
-import 'package:thamizhi_keyboard/src/ui/keys/tamil_keys/tamil_keys.dart';
-import 'package:thamizhi_keyboard/src/vesaipalagai_velai.dart';
-
-//part 'src/test.dart';
-
-part 'src/vesaipalagai_vadivam.dart';
+// Note: The previous monolithic UI components (`VesaipalagaiVadivam`, `Vesaipalagai`, etc.) 
+// are purposefully excluded from exports in the new architecture as they are deprecated 
+// in favor of the new scalable `ThamizhiKeyboard` wrapper.

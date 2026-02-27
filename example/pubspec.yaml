@@ -41,6 +41,7 @@ dependencies:
   # the parent directory to use the current plugin's version.
   thamizhi_keyboard:
     path: ../
+  google_fonts: ^8.0.2
 
 dev_dependencies:
   flutter_test:
