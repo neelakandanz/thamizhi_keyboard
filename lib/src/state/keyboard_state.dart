@@ -1,9 +1,9 @@
-/// The distinct keyboard layouts supported.
 enum KeyboardLayout {
   tamil,
   english,
   englishCaps,
   numbers,
+  tamilNumbers,
   symbols,
 }
 

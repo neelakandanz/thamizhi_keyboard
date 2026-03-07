@@ -1,3 +1,9 @@
+## 0.1.1
+
+### Layout Enhancements & Documentation
+* 💅 **UI Refinement**: Extracted the Language change, Space bar, and Number change keys into a dedicated bottom navigation row to prevent key squeezing on mobile devices.
+* 🖼️ **Documentation**: Updated README screenshots to showcase the latest layout and dark-themed Example Application.
+
 ## 0.1.0
 
 ### Major UI Redesign & Architecture Overhaul

@@ -3,18 +3,18 @@ import 'package:thamizhi_keyboard/src/state/keyboard_controller.dart';
 import 'package:thamizhi_keyboard/src/state/keyboard_state.dart';
 import 'package:thamizhi_keyboard/src/ui/components/key_widget.dart';
 
-/// A standard numeric layout.
-class NumberLayout extends StatelessWidget {
+/// A layout for Tamil numbers.
+class TamilNumberLayout extends StatelessWidget {
   final KeyboardController controller;
 
-  const NumberLayout({super.key, required this.controller});
+  const TamilNumberLayout({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        _buildRow(['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']),
+        _buildRow(['௧', '௨', '௩', '௪', '௫', '௬', '௭', '௮', '௯', '௦']),
         _buildRow(['-', '/', ':', ';', '(', ')', '\$', '&', '@', '"']),
         _buildActionRow(['.', ',', '?', '!', '\'']),
         _buildNavRow(),
@@ -70,21 +70,15 @@ class NumberLayout extends StatelessWidget {
             onTap: () => controller.switchLayout(KeyboardLayout.tamil),
           ),
           KeyWidget(
-            text: 'EN',
-            isAltKey: true,
-            flex: 2,
-            onTap: () => controller.switchLayout(KeyboardLayout.english),
-          ),
-          KeyWidget(
             icon: Icons.space_bar,
-            flex: 4,
+            flex: 6,
             onTap: () => controller.onKeyPress(' '),
           ),
           KeyWidget(
-            text: '௧௨௩',
+            text: '123',
             isAltKey: true,
             flex: 2,
-            onTap: () => controller.switchLayout(KeyboardLayout.tamilNumbers),
+            onTap: () => controller.switchLayout(KeyboardLayout.numbers),
           ),
         ],
       ),

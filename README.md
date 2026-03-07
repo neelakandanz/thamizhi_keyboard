@@ -11,15 +11,13 @@ A highly professional, production-grade, and responsive Tamil keyboard SDK for F
 
 ## 📸 Showcase
 
-| Mobile (Dark Mode) | Mobile (Light Mode) |
-| :---: | :---: |
-| <img src="https://github.com/neelakandanz/thamizhi_keyboard/blob/main/out/Screen2.PNG?raw=true" width="250" /> | <img src="https://github.com/neelakandanz/thamizhi_keyboard/blob/main/out/Screen4.PNG?raw=true" width="250" /> |
+| Mobile (Tamil) | Mobile (English) | Mobile (Numeric) |
+| :---: | :---: | :---: |
+| <img src="https://github.com/neelakandanz/thamizhi_keyboard/blob/main/out/Screen2.jpeg?raw=true" width="250" /> | <img src="https://github.com/neelakandanz/thamizhi_keyboard/blob/main/out/Screen3.jpeg?raw=true" width="250" /> | <img src="https://github.com/neelakandanz/thamizhi_keyboard/blob/main/out/Screen4.jpeg?raw=true" width="250" /> |
 
 | Desktop / Web / Tablet Responsive Layout |
 | :---: |
 | <img src="https://github.com/neelakandanz/thamizhi_keyboard/blob/main/out/Screen1.PNG?raw=true" width="600" /> |
-
-*(Screenshots will be updated on the repository to reflect the new dark-themed Example Application)*
 
 ---
 
@@ -73,7 +71,7 @@ Add the following to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  thamizhi_keyboard: ^0.1.0
+  thamizhi_keyboard: ^0.1.1
 ```
 
 ### Best Practices Example

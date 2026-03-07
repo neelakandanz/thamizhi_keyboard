@@ -4,6 +4,7 @@ import 'package:thamizhi_keyboard/src/state/keyboard_state.dart';
 import 'package:thamizhi_keyboard/src/ui/layouts/english_layout.dart';
 import 'package:thamizhi_keyboard/src/ui/layouts/number_layout.dart';
 import 'package:thamizhi_keyboard/src/ui/layouts/tamil_layout.dart';
+import 'package:thamizhi_keyboard/src/ui/layouts/tamil_number_layout.dart';
 import 'package:thamizhi_keyboard/src/ui/theme/keyboard_theme.dart';
 
 /// The main keyboard wrapper that manages responsive constraints and the active layout.
@@ -92,6 +93,8 @@ class _ThamizhiKeyboardState extends State<ThamizhiKeyboard> {
       case KeyboardLayout.numbers:
       case KeyboardLayout.symbols:
         return NumberLayout(controller: _keyboardController);
+      case KeyboardLayout.tamilNumbers:
+        return TamilNumberLayout(controller: _keyboardController);
     }
   }
 }

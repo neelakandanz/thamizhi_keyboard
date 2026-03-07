@@ -25,6 +25,7 @@ class EnglishLayout extends StatelessWidget {
               ['z', 'x', 'c', 'v', 'b', 'n', 'm'],
               isCaps,
             ),
+            _buildNavRow(),
           ],
         );
       },
@@ -65,27 +66,37 @@ class EnglishLayout extends StatelessWidget {
             );
           }),
           KeyWidget(
+            icon: Icons.backspace_outlined,
+            isAltKey: true,
+            flex: 2,
+            onTap: () => controller.onBackspace(),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildNavRow() {
+    return Expanded(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          KeyWidget(
             text: 'TA',
             isAltKey: true,
             flex: 2,
             onTap: () => controller.switchLayout(KeyboardLayout.tamil),
           ),
           KeyWidget(
+            icon: Icons.space_bar,
+            flex: 6,
+            onTap: () => controller.onKeyPress(' '),
+          ),
+          KeyWidget(
             text: '123',
             isAltKey: true,
             flex: 2,
             onTap: () => controller.switchLayout(KeyboardLayout.numbers),
-          ),
-          KeyWidget(
-            icon: Icons.space_bar,
-            flex: 4,
-            onTap: () => controller.onKeyPress(' '),
-          ),
-          KeyWidget(
-            icon: Icons.backspace_outlined,
-            isAltKey: true,
-            flex: 2,
-            onTap: () => controller.onBackspace(),
           ),
         ],
       ),

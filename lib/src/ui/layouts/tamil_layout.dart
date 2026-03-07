@@ -17,7 +17,8 @@ class TamilLayout extends StatelessWidget {
         _buildRow(['அ', 'இ', 'க்', 'ச்', 'ட்', 'த்', 'ப்', 'ற்']),
         _buildRow(['உ', 'எ', 'ய்', 'ர்', 'ல்', 'வ்', 'ழ்', 'ள்']),
         _buildRow(['ஐ', 'ஓ', 'ங்', 'ஞ்', 'ண்', 'ந்', 'ம்', 'ன்']),
-        _buildBottomRow(),
+        _buildActionRow(),
+        _buildNavRow(),
       ],
     );
   }
@@ -35,15 +36,10 @@ class TamilLayout extends StatelessWidget {
     );
   }
 
-  Widget _buildBottomRow() {
+  Widget _buildActionRow() {
     return Expanded(
       child: Row(
         children: [
-          KeyWidget(
-            text: 'EN',
-            isAltKey: true,
-            onTap: () => controller.switchLayout(KeyboardLayout.english),
-          ),
           KeyWidget(text: 'ஆ', onTap: () => controller.onKeyPress('ஆ')),
           KeyWidget(text: 'ஈ', onTap: () => controller.onKeyPress('ஈ')),
           KeyWidget(text: 'ஊ', onTap: () => controller.onKeyPress('ஊ')),
@@ -51,15 +47,36 @@ class TamilLayout extends StatelessWidget {
           KeyWidget(text: 'ஔ', onTap: () => controller.onKeyPress('ஔ')),
           KeyWidget(text: 'ஃ', onTap: () => controller.onKeyPress('ஃ')),
           KeyWidget(
-            text: '123',
-            isAltKey: true,
-            onTap: () => controller.switchLayout(KeyboardLayout.numbers),
-          ),
-          KeyWidget(
             icon: Icons.backspace_outlined,
             isAltKey: true,
             flex: 2,
             onTap: () => controller.onBackspace(),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildNavRow() {
+    return Expanded(
+      child: Row(
+        children: [
+          KeyWidget(
+            text: 'EN',
+            isAltKey: true,
+            flex: 2,
+            onTap: () => controller.switchLayout(KeyboardLayout.english),
+          ),
+          KeyWidget(
+            icon: Icons.space_bar,
+            flex: 6,
+            onTap: () => controller.onKeyPress(' '),
+          ),
+          KeyWidget(
+            text: '123',
+            isAltKey: true,
+            flex: 2,
+            onTap: () => controller.switchLayout(KeyboardLayout.numbers),
           ),
         ],
       ),
